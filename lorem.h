@@ -1,5 +1,5 @@
 
-//FUNCTION VARIABLES
+//FUNCTION VARIABLES  
 char* loremstring = NULL;
 char* paragraph_text = "paragraphs";
 int paragraph_iter = 0;
