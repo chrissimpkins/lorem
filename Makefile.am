@@ -1,0 +1,2 @@
+bin_PROGRAMS=lorem
+lorem_SOURCES=lorem.c
