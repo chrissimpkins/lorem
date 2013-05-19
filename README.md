@@ -1,4 +1,4 @@
 lorem
 =====
 
-A lorem ipsum dummy text generator that writes to files or to standard out.
+A lorem ipsum dummy text generator that writes and appends to files or writes to standard out.
