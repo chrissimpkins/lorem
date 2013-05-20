@@ -102,4 +102,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <p>lorem will write up to one million paragraphs of dummy text to the standard out stream.  Pipe it to whatever you like.</p>
 <pre>lorem -s -n 1000000 | wc -c</pre>
 
+## Help
+Enter the following for help:
+<pre>lorem -h</pre>
+All of the available options are detailed.
+
 
