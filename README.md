@@ -5,6 +5,6 @@ A lorem ipsum dummy text generator that creates new text files, inserts or appen
 
 ## Installation
 Open your terminal in the main source directory and then:
-`./configure`
-`make`
-`sudo make install`
+<pre>./configure</pre>
+<pre>make</pre>
+<pre>sudo make install</pre>
