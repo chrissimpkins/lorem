@@ -156,36 +156,52 @@ void make_write_string() {
 		//write out in blocks of 1000 paragraphs
 		//first block use file write
 		concat_string(1000);
-		if (! append){
-			//write a new file if user did not request append to an existing file
-			FILE* loremfile;
-			loremfile = fopen(filename, "w");
-			fprintf(loremfile, "%s", loremstring);
-			fclose(loremfile);
-			paragraph_iter -= 1000; //decrement iter by 1000 that were written to file
+		// If user requested standard out stream write
+		if (standard_out){
+			printf("%s",loremstring);
+			while ((paragraph_iter - 1000) > 0){
+				//lorem string now has 1000 paragraphs, write them out in blocks of 1000 until number of remaining paragraphs < 1000
+				printf("%s", loremstring);
+				paragraph_iter -= 1000; //decrement by 1000 that just included
+			}
+			if (paragraph_iter > 0){
+				//if < 1000 paragraphs left, then concatenate all remaining and append
+				concat_string(paragraph_iter);
+				printf("%s", loremstring);
+			}
 		}
-		// use append in subsequent blocks after initial write or if this was requested as an append to existing file
-		FILE* loremappend;
-		loremappend = fopen(filename, "a");
-		while ((paragraph_iter - 1000) > 0){
-			//lorem string now has 1000 paragraphs, write them out in blocks of 1000 until number of remaining paragraphs < 1000
-			fprintf(loremappend, "%s", loremstring);
-			paragraph_iter -= 1000; //decrement by 1000 that just included
+		//otherwise it is a file stream write
+		else {
+			if (! append){
+				//write a new file if user did not request append to an existing file
+				FILE* loremfile;
+				loremfile = fopen(filename, "w");
+				fprintf(loremfile, "%s", loremstring);
+				fclose(loremfile);
+				paragraph_iter -= 1000; //decrement iter by 1000 that were written to file
+			}
+			// use append in subsequent blocks after initial write or if this was requested as an append to existing file
+			FILE* loremappend;
+			loremappend = fopen(filename, "a");
+			while ((paragraph_iter - 1000) > 0){
+				//lorem string now has 1000 paragraphs, write them out in blocks of 1000 until number of remaining paragraphs < 1000
+				fprintf(loremappend, "%s", loremstring);
+				paragraph_iter -= 1000; //decrement by 1000 that just included
+			}
+			if (paragraph_iter > 0){
+				//if < 1000 paragraphs left, then concatenate all remaining and append
+				concat_string(paragraph_iter);
+				append_string();
+			}
+			fclose(loremappend);
 		}
-		if (paragraph_iter > 0){
-			//if < 1000 paragraphs left, then concatenate all remaining and append
-			concat_string(paragraph_iter);
-			append_string();
-		}
-		fclose(loremappend);
-
 	}
 	else{
-		//one paragraph, write the loremstring as is
+		//Single paragraph write (handles std out writes in the function)
 		write_string();
-	}
-
+		}
 }
+
 
 //simple string write
 void write_string() {
@@ -220,7 +236,6 @@ void append_string() {
 
 void concat_string(int para_number) {
 	//create a temp lorem string copy to use for contcatenation of subsequent paragraphs
-	//asprintf(&loremstring, lorem);
 	size_t length = strlen(lorem) + 1;
 	loremstring = (char*)calloc(length, sizeof(char));
 	strcpy(loremstring, lorem);	
