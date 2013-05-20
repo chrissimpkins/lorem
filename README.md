@@ -1,4 +1,10 @@
 lorem
 =====
 
-A lorem ipsum dummy text generator that writes and appends to files or writes to standard out.
+A lorem ipsum dummy text generator that creates new text files, inserts or appends dummy text in existing files, or prints it to standard out.
+
+## Installation
+Open your terminal in the main source directory and then:
+`./configure`
+`make`
+`sudo make install`
