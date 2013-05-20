@@ -19,7 +19,7 @@ int append = 0;					//flag for append to file rather than overwrite file
 int replace = 0;
 
 //CONSTANTS
-#define VERSION ("0.2.0")
+#define VERSION ("0.2.1")
 #define DEVELOPER ("Christopher Simpkins")
 #define YEAR ("2013")
 #define LICENSE ("MIT License")
