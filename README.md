@@ -33,7 +33,7 @@ Open your terminal in the main source directory and then:
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<p>Add the delimiter `&lt;lorem&gt;` to the file like this:</p>
+<p>Add the delimiter `<lorem>` to the file like this:</p>
 <pre>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
