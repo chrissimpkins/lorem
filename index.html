@@ -33,7 +33,7 @@
       <section id="main_content" class="inner">
         <h2>Installation</h2>
 
-<p>Download the source from one of the links to the right above.  Unpack the source and open your terminal in the main source directory. Then the following on the command line:</p>
+<p>Download the source from one of the links to the right above.  Unpack the source and open your terminal in the main source directory. Then enter the following on the command line:</p>
 
 <pre><code>./configure
 make
@@ -41,6 +41,9 @@ sudo make install
 </code></pre>
 
 <p>If you get an error, you likely need to update GNU Automake on your system.  You can download and install updated packages through your package manager or on the <a href="http://ftp.gnu.org/gnu/automake/">GNU ftp site</a>.</p>
+<p>You can confirm that it is installed by checking the help with the following command:</p>
+<pre>lorem -h</pre>
+<p>If it worked, it works! Now you can generate more dummy text than you ever thought possible!</p>
 <p>If all else fails, you can build the source with the following command (assuming that you have gcc):</p>
 <pre>gcc lorem.c -O3 -Wall -g -o lorem</pre>
 <p>Manually move the lorem binary into a directory on your PATH or use it from the directory where you installed it like this:</p>
