@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
@@ -74,14 +75,14 @@ int main(int argc, char **argv) {
 	//test for request below the paragraph limit (defined in PARA_LIMIT in lorem.h)
 	if (number_paragraph <= PARA_LIMIT && replace == 0) {
 		make_write_string();
+		free(loremstring);
 		//respond to user with total number of paragraphs written to file (if not standard out stream write)
 		if (! standard_out){
-		//format the response string sent to user after completion
-		format_output();
-		printf("Wrote %d %s of lorem text to '%s'\n", number_paragraph, paragraph_text, filename);
-		//free the loremstring that was created to hold the loremstring
-		free(loremstring);
-	}
+			//format the response string sent to user after completion
+			format_output();
+			printf("Wrote %d %s of lorem text to '%s'\n", number_paragraph, paragraph_text, filename);
+			//free the loremstring that was created to hold the loremstring
+		}
 	}
 	else if (number_paragraph <= PARA_LIMIT && replace == 1){
 		get_replacement_strings();
@@ -158,7 +159,6 @@ void make_write_string() {
 		concat_string(1000);
 		// If user requested standard out stream write
 		if (standard_out){
-			printf("%s",loremstring);
 			while ((paragraph_iter - 1000) > 0){
 				//lorem string now has 1000 paragraphs, write them out in blocks of 1000 until number of remaining paragraphs < 1000
 				printf("%s", loremstring);
@@ -235,17 +235,15 @@ void append_string() {
 }
 
 void concat_string(int para_number) {
-	//create a temp lorem string copy to use for contcatenation of subsequent paragraphs
-	size_t length = strlen(lorem) + 1;
-	loremstring = (char*)calloc(length, sizeof(char));
-	strcpy(loremstring, lorem);	
-	for (int i = 0; i < (para_number - 1); ++i){
-		strcat(loremstring, "\n");
-		strcat(loremstring, lorem);
+	if (sizeof(loremstring) > 0){
+		free(loremstring);
 	}
-	if (para_number == 1){
-		//just add a newline to it
-		strcat(loremstring, "\n");
+	//create a temp lorem string copy to use for contcatenation of subsequent paragraphs
+	size_t length = strlen(lorem_n);
+	loremstring = (char*)calloc(((length*para_number) + 1), sizeof(char));
+	strcpy(loremstring, lorem_n);
+	for (int i = 0; i < (para_number - 1); ++i){
+		strcat(loremstring, lorem_n);
 	}
 }
 
@@ -309,11 +307,20 @@ void tokenize_string(){
 		fprintf(stderr, "Unable to locate the replacement token '<lorem>' in the input file. Is it included?");
 		exit(EXIT_FAILURE);
 	}
+	size_t buffersize = strlen(buffer) + 1;
+	size_t postsize = strlen((p+7)) + 1;
 	//if so, copy the portion of the string that precedes the token
-	prestring = (char*)calloc(p - buffer, sizeof(char));
+	if (sizeof(prestring) > 0) {
+		free(prestring);
+	}
+	prestring = (char*)calloc((p - buffer), sizeof(char));
+
 	strncpy(prestring, buffer, p - buffer);
-	prestring[p - buffer] = '\0';
-	poststring = (char*)calloc(*(p + 7), sizeof(char));
+	prestring[(p - buffer)] = '\0';
+	if (sizeof(poststring) > 0) {
+		free(poststring);
+	}
+	poststring = (char*)calloc(postsize, sizeof(char));
 	strcpy(poststring, p + 7);
 }
 
