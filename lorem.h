@@ -1,4 +1,8 @@
-
+/*------------------------------------------------------
+*  lorem.h
+*  Copyright 2013. Christopher Simpkins
+*  MIT License
+-------------------------------------------------------*/
 //FUNCTION VARIABLES  
 char* loremstring;		//used to make the lorem string
 char* in_filename;

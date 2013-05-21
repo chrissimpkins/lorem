@@ -1,4 +1,8 @@
-
+/*------------------------------------------------------
+*  lorem.c
+*  Copyright 2013. Christopher Simpkins
+*  MIT License
+-------------------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
