@@ -3,6 +3,8 @@ lorem
 
 A lorem ipsum dummy text generator that creates new text files, inserts or appends dummy text in existing files, or prints it to the standard out stream (so that you can pipe it to whatever you'd like).
 
+<a href="http://j.mp/LOREM">http://j.mp/LOREM</a>
+
 ## Installation
 Open your terminal in the main source directory and then:
 <pre>./configure</pre>
