@@ -44,6 +44,7 @@ Open your terminal in the main source directory and then:
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
+<script src="https://gist.github.com/chrissimpkins/7de970c66a7d661bd5a2.js"></script>
 <p>Add the delimiter <code>&lt;lorem&gt;</code> to the file like this (it's between the body tags):</p>
 <pre>
 &lt;!DOCTYPE html&gt;
