@@ -245,6 +245,10 @@ void concat_string(int para_number) {
 	//create a temp lorem string copy to use for contcatenation of subsequent paragraphs
 	size_t length = strlen(lorem_n);
 	loremstring = (char*)calloc(((length*para_number) + 1), sizeof(char));
+	if (loremstring == NULL){
+		fprintf(stderr, "Error allocating memory for the text.");
+		exit(EXIT_FAILURE);
+	}
 	strcpy(loremstring, lorem_n);
 	for (int i = 0; i < (para_number - 1); ++i){
 		strcat(loremstring, lorem_n);
@@ -290,7 +294,7 @@ void read_input_file () {
 	 
 	/* grab sufficient memory for the 
 	buffer to hold the text */
-	buffer = (char*)calloc(numbytes, sizeof(char));	
+	buffer = (char*)calloc(numbytes, sizeof(char));
 	 
 	/* memory error */
 	if(buffer == NULL){
@@ -318,6 +322,10 @@ void tokenize_string(){
 		free(prestring);
 	}
 	prestring = (char*)calloc((p - buffer), sizeof(char));
+	if (prestring == NULL){
+		fprintf(stderr, "Error allocating memory to perform the text replacement.");
+		exit(EXIT_FAILURE);
+	}
 
 	strncpy(prestring, buffer, p - buffer);
 	prestring[(p - buffer)] = '\0';
@@ -325,6 +333,10 @@ void tokenize_string(){
 		free(poststring);
 	}
 	poststring = (char*)calloc(postsize, sizeof(char));
+	if (poststring == NULL){
+		fprintf(stderr, "Error allocating memory to perform the text replacement.");
+		exit(EXIT_FAILURE);
+	}
 	strcpy(poststring, p + 7);
 }
 

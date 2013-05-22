@@ -20,10 +20,10 @@ char* token = "<lorem>";		// Default replacement token. Inserted in an in file s
 //FLAGS
 int standard_out = 0;           //flag for print to stdout rather than a file
 int append = 0;					//flag for append to file rather than overwrite file
-int replace = 0;
+int replace = 0;				//flag for replacement of <lorem> delimiter in existing text file
 
-//CONSTANTS
-#define VERSION ("0.2.2")
+//CONSTANTS & DEFAULTS
+#define VERSION ("0.2.3")
 #define DEVELOPER ("Christopher Simpkins")
 #define YEAR ("2013")
 #define LICENSE ("MIT License")
