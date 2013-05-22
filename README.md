@@ -37,7 +37,7 @@ Open your terminal in the main source directory and then:
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<p>Add the delimiter <code>&lt;lorem&gt;</code> to the file like this (it's between the body tags):</p>
+<p>Add the delimiter <code>&lt;lorem&gt;</code> to the file like this (it's between the p tags):</p>
 <pre>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -71,10 +71,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<p>Rinse and repeat as desired</p>
+<p>Rinse and repeat as desired.  Use the -n option to insert more than one paragraph.</p>
 
 ### Insert Tags Before and After Each Paragraph
-<p>If you want to wrap each paragraph with it's own set of tags, you can enter them with the -b and -e options (for begin and end). Make sure that you use quotes around special characters on the command line. This includes the < and > symbols.</p>
+<p>If you want to wrap each paragraph with it's own set of tags, you can enter them with the -b and -e options (for begin and end). Make sure that you use quotes around special characters on the command line. This includes the &lt; and &gt; symbols.</p>
 
 <p>Here is an example of how you would make five paragraphs of dummy text wrapped with a p tag that has a class.</p>
 
