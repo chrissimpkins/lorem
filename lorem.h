@@ -11,6 +11,8 @@ char* prestring; 		//from input file - precedes the insertion site of lorem text
 char* poststring; 		//from input file - after the insertion site of the lorem text
 char* paragraph_text = "paragraphs";
 int paragraph_iter = 0;
+char* user_begin_tag;		//user requested string to prepend to the paragraph (use for html tags, etc)
+char* user_end_tag;  		//user requested string to append to the paragraph (use for html tags, etc)
 
 //DEFAULTS
 int number_paragraph = 1;       // Default number of paragraphs
@@ -21,9 +23,10 @@ char* token = "<lorem>";		// Default replacement token. Inserted in an in file s
 int standard_out = 0;           //flag for print to stdout rather than a file
 int append = 0;					//flag for append to file rather than overwrite file
 int replace = 0;				//flag for replacement of <lorem> delimiter in existing text file
+int user_tagged = 0;			//flag for user request for strings to be pre/appended to the text paragraphs
 
 //CONSTANTS & DEFAULTS
-#define VERSION ("0.2.3")
+#define VERSION ("0.3.0")
 #define DEVELOPER ("Christopher Simpkins")
 #define YEAR ("2013")
 #define LICENSE ("MIT License")

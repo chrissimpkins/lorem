@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv) {
 	char c;
-	while ( (c = getopt(argc, argv, "ahrsvi:n:o:") ) != -1) {
+	while ( (c = getopt(argc, argv, "ahrsvb:e:i:n:o:") ) != -1) {
 		switch (c) {
 			case 'n':
 				if (optarg == NULL){
@@ -40,12 +40,32 @@ int main(int argc, char **argv) {
 			case 'a':
 				append = 1;	//switch append flag to 1, now appends write to file rather than writing a new file
 				break;
+			case 'b':
+				user_tagged = 1;
+				if (optarg == NULL) {
+					fprintf(stderr, "You did not enter a string to insert at the beginning of the paragraph.\n");
+					exit(EXIT_FAILURE);
+				}
+				else {
+					user_begin_tag = optarg; //the tag to be prepended to the paragraph (optional, defaults to end tag if included)
+				}
+				break;
+			case 'e':
+				user_tagged = 1;
+				if (optarg == NULL) {
+					fprintf(stderr, "You did not enter a string to insert at the end of the paragraph.\n");
+					exit(EXIT_FAILURE);
+				}
+				else {
+					user_end_tag = optarg; //the tag to be appended to the paragraph (optional, defaults to begin tag if it is included)
+				}
+				break;
 			case 'h':
 				print_help();
 				exit(EXIT_SUCCESS);
 			case 'i':
 				if (optarg == NULL){
-					fprintf(stderr, "You did not enter a file path to the input file for the text replacement.");
+					fprintf(stderr, "You did not enter a file path to the input file for the text replacement.\n");
 					exit(EXIT_FAILURE);
 				}
 				else{
@@ -242,16 +262,51 @@ void concat_string(int para_number) {
 	if (sizeof(loremstring) > 0){
 		free(loremstring);
 	}
-	//create a temp lorem string copy to use for contcatenation of subsequent paragraphs
-	size_t length = strlen(lorem_n);
-	loremstring = (char*)calloc(((length*para_number) + 1), sizeof(char));
-	if (loremstring == NULL){
-		fprintf(stderr, "Error allocating memory for the text.");
-		exit(EXIT_FAILURE);
+	// user requested a prepended and appended string for the paragraph
+	if (user_tagged == 1){
+		if (user_end_tag == NULL && user_begin_tag != NULL){
+			user_end_tag = user_begin_tag;
+		}
+		else if (user_begin_tag == NULL && user_end_tag != NULL) {
+			user_begin_tag = user_end_tag;
+		}
+		size_t length = strlen(lorem) + strlen(user_begin_tag) + strlen(user_end_tag) + strlen("\n");
+		loremstring = (char*)calloc(((length*para_number) + 1), sizeof(char));
+		char* tempstring = (char*)malloc(length);
+		if (loremstring == NULL || tempstring == NULL) {
+			fprintf(stderr, "Error allocating memory for the text.");
+			exit(EXIT_FAILURE);
+		}
+		//add beginning tag
+		strcpy(tempstring, user_begin_tag);
+		//append lorem text
+		strcat(tempstring, lorem);
+		//append end tag
+		strcat(tempstring, user_end_tag);
+		//append a newline to make it legible when printed
+		strcat(tempstring, "\n");
+		//add first tagged paragraph to the loremstring variable
+		strcpy(loremstring, tempstring);
+		//then concatenate the remaining paragraphs
+		for (int i = 0; i < (para_number - 1); ++i){
+			strcat(loremstring, tempstring);
+		}
+		//release the tempstring memory and keep loremstring in memory to write to file
+		free(tempstring);
 	}
-	strcpy(loremstring, lorem_n);
-	for (int i = 0; i < (para_number - 1); ++i){
-		strcat(loremstring, lorem_n);
+	// did not request tags appended / prepended to the paragraph
+	else {
+		size_t length = strlen(lorem_n);
+		loremstring = (char*)calloc(((length*para_number) + 1), sizeof(char));
+		if (loremstring == NULL){
+			fprintf(stderr, "Error allocating memory for the text.");
+			exit(EXIT_FAILURE);
+		}
+		strcpy(loremstring, lorem_n);
+		for (int i = 0; i < (para_number - 1); ++i){
+			strcat(loremstring, lorem_n);
+		}
+
 	}
 }
 
@@ -315,7 +370,6 @@ void tokenize_string(){
 		fprintf(stderr, "Unable to locate the replacement token '<lorem>' in the input file. Is it included?");
 		exit(EXIT_FAILURE);
 	}
-	size_t buffersize = strlen(buffer) + 1;
 	size_t postsize = strlen((p+7)) + 1;
 	//if so, copy the portion of the string that precedes the token
 	if (sizeof(prestring) > 0) {
@@ -341,12 +395,15 @@ void tokenize_string(){
 }
 
 void print_help(){
-	printf("\nlorem Help\n");
-	printf("-----------\n\n");
+	printf("\nLorem Help\n");
+	printf("version %s\n", VERSION);
+	printf("------------------------\n\n");
 	printf("Description: Create a user-specified number of dummy text paragraphs that you can write to a file, append to or insert at a specific replacement location in an existing file, or write to standard out.\n\n");
-	printf("Usage: lorem [-ahinorsv] [<positional argument>]\n\n");
+	printf("Usage: lorem [-abehinorsv] [<positional argument>]\n\n");
 	printf("Options:\n");
 	printf("\t-a : Append to a file rather than write to (or overwrite) a file.\n\t     Include the -o option with the existing file path.\n");
+	printf("\t-b : String or character to insert at the beginning of the paragraph.\n\t     Include the string as the argument & quotes around html tags.\n\t     Defaults to the end tag if not specified.\n");
+	printf("\t-e : String or character to insert at the end of the paragraph.\n\t     Include the string as the argument & quotes around html tags\n\t     Defaults to the begin tag if not specified.\n");
 	printf("\t-h : lorem help\n");
 	printf("\t-i : Input file path for lorem text replacements.\n\t     Include the -r option and the delimiter <lorem> in the file\n\t     at the replacement site.\n");
 	printf("\t-n : Number of lorem paragraphs.\n\t     Include a number after the option. Default = 1\n");
@@ -356,11 +413,13 @@ void print_help(){
 	printf("\t-v : lorem version\n");
 	printf("\nNotes:\n");
 	printf("To insert dummy text at a specific location within a file, add the delimiter <lorem> at the replacement site.  lorem will insert the requested number of paragraphs at this location with a single newline character following each paragraph.\n");
+	printf("\nUse quotes around arguments that include characters like \' \" < > etc. For instance, you should enter the html p tag with a class like this: \"<p class='theclass'>\". To include quotes, enter them like this: '\"'\n");
+	printf("\nIf you specify a beginning and end string to add to the paragraph(s), they will be inserted as entered with a newline character following the last character of the appended string.  If you indicate an insertion string for the beginning of the paragraph without specifying one for the end, the beginning tag will be added at the end as well.  If you specify only an insertion string for the end of the paragraph, then it will be inserted at the beginning as well.\n");
 	printf("\nThere is a one million paragraph limit on the amount of text that lorem generates.  This is ~447 MiB, ~1.9 million lines, & 69 million words of text. If you need more than that, use the -a option and append the remanining number (up to 1 million paragraphs with each append) to the existing file.  Include the -n option with the number of additional paragraphs that you would like to append and the -o option with the file path of the file to which you intend to append the lorem text.\n");
 }
 
 void print_version() {
 	printf("\nlorem version %s\n", VERSION);
 	printf("Copyright %s %s\n", YEAR, DEVELOPER);
-	printf("%s\n", LICENSE);
+	printf("%s\n\n", LICENSE);
 }
