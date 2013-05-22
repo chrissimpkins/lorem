@@ -70,20 +70,34 @@ sudo make install
 
 <p>Say you have the following html file named 'eg.html':</p>
 
-<script src="https://gist.github.com/pixsy/1f5dc9b2d84625876173.js"></script>
-<p>Add the delimiter <b><span style="color:blue"><code>&lt;lorem&gt;</code></span></b> to the file like this (it's between the body tags):</p>
+<script src="https://gist.github.com/chrissimpkins/16eb2a4eacb9fef7bbac.js"></script>
+<p>Add the delimiter <code>&lt;lorem&gt;</code> to the file like this (it's between the <p> tags):</p>
 
-<script src="https://gist.github.com/pixsy/fe2c5d955792c83158e2.js"></script>
+<script src="https://gist.github.com/chrissimpkins/ea31d70b1f086cffcfeb.js"></script>
 
-<p>Then run the following to insert 5 paragraphs of lorem text at the site of the  delimiter:</p>
+<p>Then run the following to insert 1 paragraph of lorem text at the site of the <code>&lt;lorem&gt;</code> delimiter (no need to specify -n in this case, the default is one paragraph):</p>
 
-<pre>lorem -r -n 5 -i eg.html</pre>
+<pre>lorem -r -i eg.html</pre>
 
 <p>And here is what you get:</p>
 
-<script src="https://gist.github.com/pixsy/fd4ce155b9b09139292d.js"></script>
+<script src="https://gist.github.com/chrissimpkins/a854dc7e5799a19c138d.js"></script>
 
 <p>Rinse and repeat as desired.</p>
+
+<h3><i class="icon-ellipsis-horizontal"></i> Insert Tags Before and After Each Paragraph</h3>
+<p>If you want to wrap each paragraph with it's own set of tags, you can enter them with the <code>-b</code> and <code>-e</code> options (for begin and end).  Make sure that you use quotes around special characters on the command line.  This includes the &lt; and &gt; symbols.</p>
+<p>Here is an example of how you would make five paragraphs of dummy text wrapped with a p tag that has a class.</p>
+
+<p>The file before the insert with the <code>&lt;lorem&gt;</code> delimiter included between the body tags:</p>
+
+<script src="https://gist.github.com/chrissimpkins/7de970c66a7d661bd5a2.js"></script>
+
+<p>Enter the following command:</p>
+<pre>lorem -r -n 5 -b "<p class='coolclass'>" -e "</p>"</pre>
+<p>And here is what you get:</p>
+
+<script src="https://gist.github.com/chrissimpkins/1bd3595a832ef91ca346.js"></script>
 
 <h3><i class="icon-ellipsis-horizontal"></i> Pipe Dummy Text to Another Application</h3>
 
