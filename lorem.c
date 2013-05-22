@@ -137,7 +137,7 @@ void concat_write_replacement() {
 	fprintf(outfile, "%s", prestring);
 	fseek(outfile, 0L, SEEK_END);
 	//Loremstring insertion (at the <lorem> delimiter)
-	if (number_paragraph > 1 && number_paragraph < 1000){
+	if (number_paragraph < 1000){
 		concat_string(number_paragraph);
 		fprintf(outfile, "%s", loremstring);
 	}
