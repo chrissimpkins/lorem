@@ -87,7 +87,7 @@ sudo make install
 <p>Let's use the same 'eg.html' file that we did in the example above, however, this time we will add blocks of Samuel L. Jackson ipsum (kindly provided by <a href="http://slipsum.com">http://slipsum.com</a>).  The Samuel L. Jackson ipsum is located in the file 'path/to/samuel.txt'.  That file looks like this:</p>
 <script src="https://gist.github.com/chrissimpkins/10dcd1574f926be6e4d5.js"></script>
 <p>Now let's insert ten paragraphs of that quote and wrap each of the paragraphs with a p tag that includes a 'samuel' class.  This will be replaced in the location of the <code>&lt;lorem&gt;</code> tag in the recipient text document.  Perform this amazing feat like so:</p>
-<pre>lorem -r -n 10 -t path/to/samuel.txt -i eg.html -b "<p class='samuel'>" -e "</p>"
+<pre>lorem -r -n 10 -t path/to/samuel.txt -i eg.html -b "<p class='samuel'>" -e "</p>"</pre>
 <p>And here is the result:</p>
 <script src="https://gist.github.com/chrissimpkins/323998a1aed9340b6689.js"></script>
 <p>Note how we used the -b and -e options to specify the tags at the beginning and end of each block of text.  You can insert any character or string around each of the paragraphs that are inserted into the recipient text document.</p>
