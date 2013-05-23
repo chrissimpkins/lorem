@@ -95,9 +95,9 @@ sudo make install
 <h3><i class="icon-ellipsis-horizontal"></i> Pipe Large Blocks of Text to Another Application</h3>
 
 <p>Lorem will generate and write up to one million paragraphs of dummy text to the standard out stream.  That's over 69 million Latin words (>467 MiB)!  Feel free to bring your own text and write up to 1 million blocks of it to the standard out stream as well.  Pipe it to whatever you like.  No need to save massive text files on your drive for testing purposes.</p>
-<p>To use the lorem text that is available in the application:</p>
+<p>To pipe 1 million paragraphs of lorem text to wc and count the characters:</p>
 <pre>lorem -s -n 1000000 | wc -c</pre>
-<p>And to use your own text that is located on a path 'path/to/myfile.txt':</p>
+<p>To pipe 1 million blocks of your own text that is located on a path 'path/to/myfile.txt' to wc for a character count:</p>
 <pre>lorem -s -n 1000000 -t path/to/myfile.txt | wc -c</pre>
 
 <h2><i class="icon-question"></i> Help</h2>
