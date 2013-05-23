@@ -1,0 +1,84 @@
+>> Test date
+Thu May 23 16:22:47 2013
+>> Testing version
+
+lorem version 0.4.2
+Copyright 2013 Christopher Simpkins
+MIT License
+
+>> NEW FILE TESTS
+Wrote 1 paragraph of text to 'results/test1.txt'
+>> Default = 1 paragraph created in test1.txt
+>> This should result in 1
+The substring Lorem was found 1 time in results/test1.txt
+Wrote 1 paragraph of text to 'results/test2.txt'
+>> 1 paragraph created in test2.txt
+>> This should result in 1
+The substring Lorem was found 1 time in results/test2.txt
+Wrote 5 paragraphs of text to 'results/test3.txt'
+>> 5 paragraphs created in test3.txt
+>> This should result in 5
+The substring Lorem was found 5 times in results/test3.txt
+Wrote 1000 paragraphs of text to 'results/test4.txt'
+>> 1000 paragraphs created in test4.txt
+>> This should result in 1000
+The substring Lorem was found 1000 times in results/test4.txt
+Wrote 1 paragraph of text to 'results/test5.txt'
+>> 1 paragraph of user text created in test5.txt
+>> This should result in 1
+The substring Normally, was found 1 time in results/test5.txt
+Wrote 1 paragraph of text to 'results/test6.txt'
+>> 1 paragraph of user text created in test6.txt
+>> This should result in 1
+The substring Normally, was found 1 time in results/test6.txt
+Wrote 5 paragraphs of text to 'results/test7.txt'
+>> 5 paragraphs of user text created in test7.txt
+>> This should result in 5
+The substring Normally, was found 5 times in results/test7.txt
+Wrote 1000 paragraphs of text to 'results/test8.txt'
+>> 1000 paragraphs of user text created in test8.txt
+>> This should result in 1000
+The substring Normally, was found 1000 times in results/test8.txt
+>> NEW FILE TESTS COMPLETE
+ 
+>> FILE APPEND & TAG TESTS
+Wrote 1 paragraph of text to 'results/test1.txt'
+>> appended 1 paragraph with tags and user entered text to test1.txt using default n = 1
+>> This should result in 1
+The substring Normally, was found 1 time in results/test1.txt
+Wrote 1 paragraph of text to 'results/test1.txt'
+>> appended 1 paragraph with tags and user entered text to test1.txt using explicit n = 1
+>> This should result in 2
+The substring Normally, was found 2 times in results/test1.txt
+Wrote 5 paragraphs of text to 'results/test2.txt'
+>> appended 5 paragraphs with tags and user entered text to test2.txt
+>> This should result in 5
+The substring Normally, was found 5 times in results/test2.txt
+Wrote 1000 paragraphs of text to 'results/test3.txt'
+>> appended 1000 paragraphs with tags and user entered text to test3.txt
+>> This should result in 1000
+The substring Normally, was found 1000 times in results/test3.txt
+>> TESTS COMPLETE
+ 
+>> FILE REPLACEMENT TESTS
+Inserted 1 paragraphs of text in the file 'results/r1.txt'.
+>> default n=1 paragraph lorem insert in r1.txt
+Inserted 1 paragraphs of text in the file 'results/r2.txt'.
+>> explicit n=1 paragraph lorem insert in r2.txt
+Inserted 5 paragraphs of text in the file 'results/r3.txt'.
+>> n=5 paragraph lorem insert in r3.txt
+Inserted 1000 paragraphs of text in the file 'results/r4.txt'.
+>> default n = 1 of user submitted text replacement in results/r5.txt
+Inserted 1 paragraphs of text in the file 'results/r5.txt'.
+>> explicit n = 1 of user submitted text replacement in results/r6.txt
+Inserted 1 paragraphs of text in the file 'results/r6.txt'.
+>> n=5 paragraphs of user submitted text replacement in results/r7.txt
+Inserted 5 paragraphs of text in the file 'results/r7.txt'.
+>> n = 1000 paragraphs of user submitted text replacement in results/r8.txt
+Inserted 1000 paragraphs of text in the file 'results/r8.txt'.
+>> n = 5 paragraphs of lorem text with p tags around the paragraphs in results/r9.txt
+Inserted 5 paragraphs of text in the file 'results/r9.txt'.
+>> n = 5 paragraphs of user submitted text with p tags around the paragraphs in results/r10.txt
+Inserted 5 paragraphs of text in the file 'results/r10.txt'.
+>> TESTS COMPLETE
+ 
