@@ -1,11 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Lorem example</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
-</head>
-<body id="index" class="home">
 <lorem>
-</body>
-</html>
+This is a test of replacement tag at the beginning of the file.  This text should appear after the replacement text.
