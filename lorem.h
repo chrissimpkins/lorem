@@ -29,7 +29,7 @@ int user_tagged = 0;			//flag for user request for strings to be pre/appended to
 int user_insert_text = 0;		//flag for user providing own text string rather than using the provided lorem text
 
 //CONSTANTS & DEFAULTS
-#define VERSION ("0.4.1")
+#define VERSION ("0.4.2")
 #define DEVELOPER ("Christopher Simpkins")
 #define YEAR ("2013")
 #define LICENSE ("MIT License")

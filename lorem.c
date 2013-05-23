@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 				else{
 					number_paragraph = atoi(optarg);
 					if (number_paragraph == 0){
-						printf("The number of paragraphs was not properly specified with the -n switch.\n");
+						printf("The number of paragraphs was not properly specified with the -n option.\n");
 						printf("Usage: lorem -n <number>");
 						exit(EXIT_FAILURE);
 					}
@@ -495,7 +495,7 @@ void print_help(){
 	printf("To insert text at a specific location within a file, add the delimiter <lorem> at the replacement site.  lorem will insert the requested number of paragraphs at this location with a single newline character following each paragraph.\n");
 	printf("\nUse quotes around arguments that include characters like \' \" < > etc. For instance, you should enter the html p tag with a class like this: \"<p class='theclass'>\". To include quotes, enter them like this: '\"'\n");
 	printf("\nIf you specify a beginning and end string to add to the paragraph(s), they will be inserted as entered with a newline character following the last character of the appended string.  If you indicate an insertion string for the beginning of the paragraph without specifying one for the end, the beginning tag will be added at the end as well.  If you specify only an insertion string for the end of the paragraph, then it will be inserted at the beginning as well.\n");
-	printf("\nThere is a one million paragraph limit on the amount of text that lorem generates.  This is ~447 MiB, ~1.9 million lines, & 69 million words of text. If you need more than that, use the -a option and append the remanining number (up to 1 million paragraphs with each append) to the existing file.  Include the -n option with the number of additional paragraphs that you would like to append and the -o option with the file path of the file to which you intend to append the lorem text.\n");
+	printf("\nThere is a one million paragraph limit on the amount of text that lorem generates.  This is ~447 MiB, ~1 million lines, & 69 million words of text. If you need more than that, use the -a option and append the remanining number (up to 1 million paragraphs with each append) to the existing file.  Include the -n option with the number of additional paragraphs that you would like to append and the -o option with the file path of the file to which you intend to append the lorem text.\n");
 }
 
 void print_version() {
