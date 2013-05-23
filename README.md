@@ -3,10 +3,10 @@ lorem
 
 A dummy text generator and text replacement application that creates new text files, inserts or appends text in existing files, or prints it to the standard out stream (so that you can pipe it to whatever you'd like).
 
-### NEW
-Use your own dummy text (or any replacement text) by including the insertion text file path after the -t option.  <a href="#owntext">More information below</a>.
-
 <a href="http://j.mp/LOREM">http://j.mp/LOREM</a>
+
+## Updates
+Use your own dummy text (or any replacement text) by including the insertion text file path after the -t option.  <a href="#owntext">More information below</a>.
 
 ## Installation
 Open your terminal in the main source directory and then:
