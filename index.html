@@ -4,10 +4,10 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <title>Lorem | A lorem ipsum generator</title>
-    <meta itemprop="name" content="Lorem | A lorem ipsum generator">
-    <meta itemprop="description" content="A lorem ipsum dummy text generator that inserts text in existing files and prints out to the standard output stream.">
-    <meta name="description" content="A lorem ipsum dummy text generator that inserts text in existing files and prints out to the standard output stream." />
+    <title>Lorem | A dummy text generator and text replacement power tool</title>
+    <meta itemprop="name" content="Lorem | A dummy text generator and text replacement power tool">
+    <meta itemprop="description" content="A dummy text generator and text replacement power tool that inserts text in existing files and prints out to the standard output stream.">
+    <meta name="description" content="A dummy text generator and text replacement power toolthat inserts text in existing files and prints out to the standard output stream." />
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
@@ -22,7 +22,7 @@
           <a id="forkme_banner" href="https://github.com/chrissimpkins/lorem">View on GitHub</a>
 
           <h1 id="project_title"><i class="icon-leaf"></i> Lorem</h1>
-          <h2 id="project_tagline">A lorem ipsum dummy text generator that inserts or appends dummy text in existing files, creates new text files, and writes text to the standard out stream.</h2>
+          <h2 id="project_tagline">A dummy text generator and text replacement power tool that inserts text in existing files, creates new text files, and writes text to the standard out stream.</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/chrissimpkins/lorem/zipball/master">Download this project as a .zip file</a>
@@ -34,8 +34,10 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2><i class="icon-check-sign"></i> Installation</h2>
 
+<h2><i class="icon-check-sign"></i>Updates</h2>
+<p>Updated to provide you with the ability to specify your own text blocks for insertion into files at the <code>&lt;lorem&gt;</code> tag.  Lorem will wrap your text with any characters/tags/strings that you'd like (if so desired) and insert repeat blocks of your text (up to 1 million repetitions!) into the recipient text file.  See the use examples or type <code>lorem -h</code> for more information.</p>
+<h2><i class="icon-check-sign"></i> Installation</h2>
 <p>Download the source from one of the links to the right above.  Unpack the source and open your terminal in the main source directory. Then enter the following on the command line:</p>
 
 <pre><code>./configure
@@ -54,56 +56,48 @@ sudo make install
 
 <h2><i class="icon-check-sign"></i> Use Examples</h2>
 
-<h3><i class="icon-ellipsis-horizontal"></i> Create a New File with Dummy Text</h3>
-
-<p>Say you want to create a new file named 'eg.txt' with 5 paragraphs of dummy text. Use the following command:</p>
-
+<h3><i class="icon-ellipsis-horizontal"></i> Create a New File with Lorem Ipsum Dummy Text</h3>
+<p>To create a new file named 'eg.txt' with 5 paragraphs of dummy text, use the following command:</p>
 <pre>lorem -n 5 -o eg.txt</pre>
 
-<h3><i class="icon-ellipsis-horizontal"></i> Append Dummy Text to an Existing Text File</h3>
+<h3><i class="icon-ellipsis-horizontal"></i> Create a New File with Your Own Text</h3>
+<p>To create a new file called 'eg.txt' with 10 'blocks' of text that you specify in the file located at 'path/to/inserttext.txt'</p>
+<pre>lorem -n 10 -t path/to/inserttext.txt -o eg.txt</pre>
 
-<p>You have a file named 'eg.txt' and you would like to append 10 paragraphs of dummy text to it. Use the following command:</p>
+<h3><i class="icon-ellipsis-horizontal"></i> Append Lorem Ipsum Dummy Text to an Existing Text File</h3>
+<p>To append 7 paragraphs of lorem ipsum text to an existing text file named 'eg.txt', use the following command:</p>
+<pre>lorem -a -n 7 -o eg.txt</pre>
 
-<pre>lorem -a -n 10 -o eg.txt</pre>
+<h3><i class="icon-ellipsis-horizontal"></i> Append Your Own Text to an Existing Text File</h3>
+<p>To append 15 'blocks' of your own text that is located in the file 'path/to/inserttext.txt' to an existing text file named 'eg.txt', use the following command:</p>
+<pre>lorem -a -n 15 -t path/to/inserttext.txt -o eg.txt
 
-<h3><i class="icon-ellipsis-horizontal"></i> Insert Dummy Text into a Specific Location in an Existing Text File</h3>
-
+<h3><i class="icon-ellipsis-horizontal"></i> Insert Lorem Ipsum Dummy Text into a Specific Location in an Existing Text File</h3>
 <p>Say you have the following html file named 'eg.html':</p>
-
 <script src="https://gist.github.com/chrissimpkins/16eb2a4eacb9fef7bbac.js"></script>
 <p>Add the delimiter <code>&lt;lorem&gt;</code> to the file like this (it's between the p tags):</p>
-
 <script src="https://gist.github.com/chrissimpkins/ea31d70b1f086cffcfeb.js"></script>
-
 <p>Then run the following to insert 1 paragraph of lorem text at the site of the <code>&lt;lorem&gt;</code> delimiter (no need to specify -n in this case, the default is one paragraph):</p>
-
 <pre>lorem -r -i eg.html</pre>
-
 <p>And here is what you get:</p>
-
 <script src="https://gist.github.com/chrissimpkins/a854dc7e5799a19c138d.js"></script>
-
 <p>Rinse and repeat as desired.</p>
 
-<h3><i class="icon-ellipsis-horizontal"></i> Insert Tags Before and After Each Paragraph</h3>
-<p>If you want to wrap each paragraph with it's own set of tags, you can enter them with the <code>-b</code> and <code>-e</code> options (for begin and end).  Make sure that you use quotes around special characters on the command line.  This includes the &lt; and &gt; symbols.</p>
-<p>Here is an example of how you would make five paragraphs of dummy text wrapped with a p tag that has a class.</p>
+<h3><i class="icon-ellipsis-horizontal"></i> Insert Your Own Text into a Specific Location in an Existing Text File and Wrap with Tags</h3>
+<p>Let's use the same 'eg.html' file that we did in the example above, however, this time we will add blocks of Samuel L. Jackson ipsum (kindly provided by <a href="http://slipsum.com">http://slipsum.com</a>).  The Samuel L. Jackson ipsum is located in the file 'path/to/samuel.txt'.  That file looks like this:</p>
+<script src="https://gist.github.com/chrissimpkins/10dcd1574f926be6e4d5.js"></script>
+<p>Now let's insert ten paragraphs of that quote and wrap each of the paragraphs with a p tag that includes a 'samuel' class.  This will be replaced in the location of the <code>&lt;lorem&gt;</code> tag in the recipient text document.  Perform this amazing feat like so:</p>
+<pre>lorem -r -n 10 -t path/to/samuel.txt -i eg.html -b "<p class='samuel'>" -e "</p>"
+<p>And here is the result:</p>
+<script src="https://gist.github.com/chrissimpkins/323998a1aed9340b6689.js"></script>
+<p>Note how we used the -b and -e options to specify the tags at the beginning and end of each block of text.  You can insert any character or string around each of the paragraphs that are inserted into the recipient text document.</p>
 
-<p>The file before the insert with the <code>&lt;lorem&gt;</code> delimiter included between the body tags:</p>
+<h3><i class="icon-ellipsis-horizontal"></i> Pipe Large Blocks of Text to Another Application</h3>
 
-<script src="https://gist.github.com/chrissimpkins/7de970c66a7d661bd5a2.js"></script>
-
-<p>Enter the following command:</p>
-<pre>lorem -r -n 5 -b &quot;&lt;p class='coolclass'&gt;&quot; -e &quot;&lt;/p&gt;&quot;</pre>
-<p>And here is what you get:</p>
-
-<script src="https://gist.github.com/chrissimpkins/1bd3595a832ef91ca346.js"></script>
-
-<h3><i class="icon-ellipsis-horizontal"></i> Pipe Dummy Text to Another Application</h3>
-
-<p>Lorem will write up to one million paragraphs of dummy text to the standard out stream.  That's over 69 million Latin words (>467 MiB)! Pipe it to whatever you like.</p>
+<p>Lorem will generate and write up to one million paragraphs of dummy text to the standard out stream.  That's over 69 million Latin words (>467 MiB)!  Feel free to bring your own text and write up to 1 million blocks of it to the standard out stream as well.  Pipe it to whatever you like.  No need to save massive text files on your drive for testing purposes.</p>
 
 <pre>lorem -s -n 1000000 | wc -c</pre>
+<pre>lorem -s -n 1000000 -t path/to/myfile.txt | wc -c</pre>
 
 <h2><i class="icon-question"></i> Help</h2>
 
