@@ -119,8 +119,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Ta da!
 
-### Bring Your Own Dummy Text
-<p>If you want to use your own dummy text in replacements, include the file path to the dummy text file following the -t option.</p>
+### Bring Your Own Text for Replacements
+<p>If you want to use your own text in replacements, include the file path to the file that includes the text that you want to insert into another file after the -t option.</p>
 <p>Here is an example of how to include 10 blocks of your own text that is included in a file on the path path/to/replacement.txt and is inserted in the location of the <code>&lt;lorem&gt;</code> delimiter of a file on the path path/to/insertfile.txt</p>
 
 <pre>lorem -r -n 10 -i path/to/insertfile.txt -t path/to/replacement.txt</pre>
