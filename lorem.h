@@ -6,7 +6,9 @@
 //FUNCTION VARIABLES  
 char* loremstring;		//used to make the lorem string
 char* in_filename;
+char* insert_filename;
 char* buffer;
+char* insert_buffer;
 char* prestring; 		//from input file - precedes the insertion site of lorem text
 char* poststring; 		//from input file - after the insertion site of the lorem text
 char* paragraph_text = "paragraphs";
@@ -24,9 +26,10 @@ int standard_out = 0;           //flag for print to stdout rather than a file
 int append = 0;					//flag for append to file rather than overwrite file
 int replace = 0;				//flag for replacement of <lorem> delimiter in existing text file
 int user_tagged = 0;			//flag for user request for strings to be pre/appended to the text paragraphs
+int user_insert_text = 0;		//flag for user providing own text string rather than using the provided lorem text
 
 //CONSTANTS & DEFAULTS
-#define VERSION ("0.3.0")
+#define VERSION ("0.4.1")
 #define DEVELOPER ("Christopher Simpkins")
 #define YEAR ("2013")
 #define LICENSE ("MIT License")
@@ -46,4 +49,5 @@ void get_replacement_strings();
 void read_input_file ();
 void tokenize_string();
 void concat_write_replacement();
+void read_user_insert_text();
 
