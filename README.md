@@ -6,7 +6,7 @@ A dummy text generator and text replacement application that creates new text fi
 <a href="http://j.mp/LOREM">http://j.mp/LOREM</a>
 
 ## Updates
-Use your own dummy text (or any replacement text) by including the insertion text file path after the -t option.  <a href="https://github.com/chrissimpkins/lorem#bring-your-own-dummy-text">More information below</a>.
+Use your own dummy text (or any replacement text) by including the insertion text file path after the -t option.  <a href="https://github.com/chrissimpkins/lorem#bring-your-own-text-for-replacements">More information below</a>.
 
 ## Installation
 Open your terminal in the main source directory and then:
