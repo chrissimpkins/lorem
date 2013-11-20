@@ -1,7 +1,7 @@
 lorem
 =====
 
-A dummy text generator and text replacement application that creates new text files, inserts or appends text in existing files, or prints it to the standard out stream (so that you can pipe it to whatever you'd like).
+A dummy text generator and text replacement application that creates new text files, embeds text in existing files, or prints it to the standard out stream (so that you can pipe it to whatever you'd like).
 
 <a href="http://j.mp/LOREM">http://j.mp/LOREM</a>
 
@@ -130,6 +130,14 @@ Ta da!
 ### Pipe Dummy Text to Another Application
 <p>lorem will write up to one million paragraphs of dummy text to the standard out stream.  Pipe it to whatever you like.</p>
 <pre>lorem -s -n 1000000 | wc -c</pre>
+
+### Increase the Text Limit
+If you need more text, modify the paragraph limit in the `lorem.h` header file.  Change the integer in the line:
+
+``` c
+#define PARA_LIMIT (int)1000000
+```
+to whatever you'd like and then re-compile and install the application using the instructions above.  Be aware of the storage limitations on your machine if you set this to a massive number... There are no protections in place for memory limits.
 
 ## Help
 Enter the following for help:
